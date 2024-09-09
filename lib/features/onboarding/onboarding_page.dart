@@ -77,11 +77,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         // Navigate to home page
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => HomePage()),
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()),
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF1E2742),
+                        backgroundColor: const Color(0xFF1E2742),
                         padding: const EdgeInsets.symmetric(
                             horizontal: 32, vertical: 16),
                         shape: RoundedRectangleBorder(
@@ -98,18 +99,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         // Navigate to home page
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => HomePage()),
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()),
                         );
                       },
                       style: OutlinedButton.styleFrom(
-                        side: BorderSide(color: Color(0xFF1E2742)),
+                        side: const BorderSide(color: Color(0xFF1E2742)),
                         padding: const EdgeInsets.symmetric(
                             horizontal: 32, vertical: 16),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Log in',
                         style:
                             TextStyle(fontSize: 16, color: Color(0xFF1E2742)),
@@ -163,7 +165,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: index == _currentPageIndex
-                      ? Color(0xFF1E2742)
+                      ? const Color(0xFF1E2742)
                       : Colors.grey,
                 ),
               );
