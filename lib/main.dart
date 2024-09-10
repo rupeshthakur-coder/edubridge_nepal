@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Onboarding App',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system, // Use system theme
+      themeMode: ThemeMode.light,
       home: const OnboardingScreen(),
     );
   }

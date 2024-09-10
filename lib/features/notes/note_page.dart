@@ -165,7 +165,6 @@ class FullImageView extends StatelessWidget {
   }
 }
 
-// Page for viewing PDF documents
 class PDFViewPage<PDFViewPageState> extends StatefulWidget {
   final String url;
 

@@ -22,7 +22,9 @@ class AppTheme {
       ),
       textTheme: const TextTheme(
         displayLarge: TextStyle(
-            color: Color(0xFF1E2742), fontWeight: FontWeight.bold, fontSize: 24),
+            color: Color(0xFF1E2742),
+            fontWeight: FontWeight.bold,
+            fontSize: 24),
         bodyLarge: TextStyle(color: Colors.grey, fontSize: 16),
         bodyMedium: TextStyle(color: Colors.black87, fontSize: 14),
         labelLarge: TextStyle(color: Colors.white, fontSize: 16),
@@ -30,7 +32,7 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,
-          backgroundColor: Color(0xFF1E2742),
+          backgroundColor: const Color(0xFF1E2742),
           textStyle: const TextStyle(fontWeight: FontWeight.bold),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
@@ -73,7 +75,7 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,
-          backgroundColor: Color(0xFF1E2742),
+          backgroundColor: const Color(0xFF1E2742),
           textStyle: const TextStyle(fontWeight: FontWeight.bold),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
