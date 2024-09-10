@@ -37,6 +37,10 @@ dependencies:
   cupertino_icons: ^1.0.6
   carousel_slider: ^5.0.0
   flutter_svg: ^2.0.10+1
+  pdfx: ^2.6.0
+  open_filex: ^4.5.0
+  flutter_bloc: ^8.1.6
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:

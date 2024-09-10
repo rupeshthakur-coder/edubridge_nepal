@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:myapp/features/notes/note_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -64,7 +67,7 @@ class _HomePageState extends State<HomePage> {
               leading: const Icon(Icons.note),
               title: const Text('Notes'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(context,MaterialPageRoute(builder: (context) => DocumentPage()),);
               },
             ),
             ListTile(
