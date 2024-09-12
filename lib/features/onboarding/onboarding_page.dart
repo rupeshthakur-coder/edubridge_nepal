@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:myapp/features/homepage/home_page.dart';
+import 'package:myapp/features/navigation_bar/navigation_bar_pages.dart';
 
 class OnboardingScreen<OnboardingScreenState> extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -78,7 +78,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const HomePage()),
+                              builder: (context) => const NavigationBarPages()),
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -96,11 +96,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                     OutlinedButton(
                       onPressed: () {
-                        // Navigate to home page
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const HomePage()),
+                              builder: (context) => const NavigationBarPages()),
                         );
                       },
                       style: OutlinedButton.styleFrom(

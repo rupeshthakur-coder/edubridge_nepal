@@ -1,7 +1,11 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
+import 'package:myapp/features/assignments/assignments_page.dart';
+import 'package:myapp/features/classes/classes_page.dart';
+
 import 'package:myapp/features/notes/note_page.dart';
+import 'package:myapp/features/quiz/quized_page.dart';
+import 'package:myapp/features/settings/profile_page.dart';
+import 'package:myapp/features/settings/settings_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -30,14 +34,25 @@ class _HomePageState extends State<HomePage> {
         }),
         title: const Text('EduBridge', style: TextStyle(color: Colors.white)),
         centerTitle: true,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(
-                  'https://mighty.tools/mockmind-api/content/cartoon/14.jpg'),
+        actions: [
+          Center(
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProfilePage()),
+                );
+              },
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      'https://mighty.tools/mockmind-api/content/cartoon/14.jpg'),
+                  radius: 28.0,
+                ),
+              ),
             ),
-          )
+          ),
         ],
       ),
       drawer: Drawer(
@@ -57,47 +72,64 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.class_),
-              title: const Text('Classes'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
+                leading: const Icon(Icons.class_),
+                title: const Text('Classes'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ClassListPage()),
+                  );
+                }),
             ListTile(
               leading: const Icon(Icons.note),
               title: const Text('Notes'),
               onTap: () {
-                Navigator.push(context,MaterialPageRoute(builder: (context) => DocumentPage()),);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DocumentPage()),
+                );
               },
             ),
             ListTile(
               leading: const Icon(Icons.assignment),
               title: const Text('Assignments'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AssignmentsPage()),
+                );
               },
             ),
             ListTile(
               leading: const Icon(Icons.quiz),
               title: const Text('Quizzes'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const QuizStartPage()),
+                );
               },
             ),
             ListTile(
               leading: const Icon(Icons.settings),
               title: const Text('Settings'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SettingsPage()),
+                );
               },
             ),
-            ListTile(
-              leading: const Icon(Icons.logout),
-              title: const Text('Logout'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
+            // ListTile(
+            //   leading: const Icon(Icons.logout),
+            //   title: const Text('Logout'),
+            //   onTap: () {
+            //     Navigator.pop(context);
+            //   },
+            // ),
           ],
         ),
       ),
