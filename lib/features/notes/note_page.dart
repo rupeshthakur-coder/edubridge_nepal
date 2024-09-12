@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pdfx/pdfx.dart';
 
-// Model class for documents
 class DocumentModel {
   final String name;
   final String url;
-  final String type; // 'pdf' or 'image'
-
+  final String type;
   DocumentModel({
     required this.url,
     required this.type,
@@ -16,7 +14,6 @@ class DocumentModel {
   });
 }
 
-// Sample list of documents
 final List<DocumentModel> documents = [
   DocumentModel(
       url:
@@ -50,9 +47,9 @@ final List<DocumentModel> documents = [
       name: 'C Complete Notes'),
   DocumentModel(
       url:
-          'https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/notes/Python_Complete_Notes.pdf',
+          'https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/6684060b5101a2ffa8292028/original/a-simple-algorithm-for-converting-random-number-generator-outputs-to-universal-distributions-to-aid-teaching-and-research-in-modern-physical-chemistry.pdf',
       type: 'pdf',
-      name: 'Python Complete Notes'),
+      name: 'Chemistry Complete Notes'),
   DocumentModel(
       url:
           'https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/notes/Android_CompleteNotes.pdf',
@@ -139,7 +136,6 @@ class DocumentPage extends StatelessWidget {
   }
 }
 
-// Page for viewing full-size images
 class FullImageView extends StatelessWidget {
   final String url;
 
