@@ -190,9 +190,11 @@ class _PDFViewPageState extends State<PDFViewPage> {
         _pdfController = PdfController(document: pdfDocument);
       });
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error loading PDF: $e')),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error loading PDF: $e')),
+        );
+      }
     }
   }
 
