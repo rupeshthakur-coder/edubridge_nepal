@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "499904403021",
+    "project_id": "edunepal-e2740",
+    "storage_bucket": "edunepal-e2740.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499904403021:android:01f904785369b297772e04",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrfPR6G5UD3nT5j3jwh_c9F0fVlM-V2gA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
