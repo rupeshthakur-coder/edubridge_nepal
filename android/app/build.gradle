@@ -36,16 +36,21 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.myapp"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdk = flutter.minSdkVersion 23
-        targetSdk = flutter.targetSdkVersion
-        versionCode = flutterVersionCode.toInteger()
-        versionName = flutterVersionName
-    }
+defaultConfig {
+    // Unique application ID
+    applicationId "com.example.myapp" // Replace with your app's package name
+
+    // Define the minimum supported Android version
+    minSdkVersion 23 // Set the minimum SDK version your app supports
+
+    // Define the target Android SDK version
+    targetSdkVersion 33 // Replace with the correct Flutter target SDK version
+
+    // App version information
+    versionCode flutterVersionCode.toInteger() // Leave as it is if flutterVersionCode is defined elsewhere
+    versionName flutterVersionName // Leave as it is if flutterVersionName is defined elsewhere
+}
+
 
     buildTypes {
         release {

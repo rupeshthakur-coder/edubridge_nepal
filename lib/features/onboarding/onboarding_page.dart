@@ -70,7 +70,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
                       onPressed: () {
@@ -90,32 +90,32 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                       ),
                       child: const Text(
-                        'Sign up',
+                        'Start your journey with us',
                         style: TextStyle(fontSize: 16),
                       ),
                     ),
-                    OutlinedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const NavigationBarPages()),
-                        );
-                      },
-                      style: OutlinedButton.styleFrom(
-                        side: const BorderSide(color: Color(0xFF1E2742)),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 32, vertical: 16),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      child: const Text(
-                        'Log in',
-                        style:
-                            TextStyle(fontSize: 16, color: Color(0xFF1E2742)),
-                      ),
-                    ),
+                    // OutlinedButton(
+                    //   onPressed: () {
+                    //     Navigator.pushReplacement(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //           builder: (context) => const NavigationBarPages()),
+                    //     );
+                    //   },
+                    //   style: OutlinedButton.styleFrom(
+                    //     side: const BorderSide(color: Color(0xFF1E2742)),
+                    //     padding: const EdgeInsets.symmetric(
+                    //         horizontal: 32, vertical: 16),
+                    //     shape: RoundedRectangleBorder(
+                    //       borderRadius: BorderRadius.circular(8),
+                    //     ),
+                    //   ),
+                    //   child: const Text(
+                    //     'Log in',
+                    //     style:
+                    //         TextStyle(fontSize: 16, color: Color(0xFF1E2742)),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
