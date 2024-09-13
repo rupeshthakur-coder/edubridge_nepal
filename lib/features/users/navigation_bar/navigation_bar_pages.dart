@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/features/classes/classes_page.dart';
-import 'package:myapp/features/homepage/home_page.dart';
+import 'package:myapp/features/users/classes/classes_page.dart';
+import 'package:myapp/features/users/homepage/home_page.dart';
 
 class ProgressPage extends StatelessWidget {
   const ProgressPage({super.key});

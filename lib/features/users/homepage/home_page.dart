@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/features/assignments/assignments_page.dart';
-import 'package:myapp/features/classes/classes_page.dart';
+import 'package:myapp/features/users/assignments/assignments_page.dart';
+import 'package:myapp/features/users/classes/classes_page.dart';
 
-import 'package:myapp/features/notes/note_page.dart';
-import 'package:myapp/features/quiz/quized_page.dart';
-import 'package:myapp/features/settings/profile_page.dart';
-import 'package:myapp/features/settings/settings_page.dart';
+import 'package:myapp/features/users/notes/note_page.dart';
+import 'package:myapp/features/users/quiz/quized_page.dart';
+import 'package:myapp/features/users/settings/profile_page.dart';
+import 'package:myapp/features/users/settings/settings_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

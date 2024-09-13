@@ -32,10 +32,8 @@ class _SettingsPageState extends State<SettingsPage> {
               title: 'Profile Settings',
               subtitle: 'Update your profile information',
               onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                      content: Text('Navigating to Profile Settings...')),
-                );
+                Navigator.of(context).pushReplacementNamed(
+                    '/profile'); // Replace '/home' with the actual home route
               },
             ),
             const SizedBox(height: 20), // Increased spacing
@@ -98,25 +96,6 @@ class _SettingsPageState extends State<SettingsPage> {
               },
             ),
             const Spacer(),
-            // Logout Button
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Logging out...')),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  backgroundColor: Colors.red,
-                ),
-                child: const Text('Logout'),
-              ),
-            ),
           ],
         ),
       ),

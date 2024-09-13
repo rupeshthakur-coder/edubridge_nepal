@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:myapp/features/navigation_bar/navigation_bar_pages.dart';
+import 'package:myapp/features/users/navigation_bar/navigation_bar_pages.dart';
 
 class OnboardingScreen<OnboardingScreenState> extends StatefulWidget {
   const OnboardingScreen({super.key});

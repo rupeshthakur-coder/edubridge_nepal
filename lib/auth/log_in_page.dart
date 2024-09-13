@@ -1,22 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
   @override
-  _SignUpPageState createState() => _SignUpPageState();
+  createState() => _SignUpPageState();
 }
 
 class _SignUpPageState extends State<SignUpPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
   bool _isLoading = false;
-
-  // Email and password controllers
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
@@ -45,7 +41,6 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      const SizedBox(height: 20),
                       TextField(
                         controller: _nameController,
                         decoration: const InputDecoration(
@@ -73,9 +68,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           prefixIcon: const Icon(Icons.lock),
                           suffixIcon: IconButton(
                             icon: const Icon(Icons.visibility),
-                            onPressed: () {
-                              // Implement show/hide password functionality if needed
-                            },
+                            onPressed: () {},
                           ),
                         ),
                         obscureText: true,
@@ -122,56 +115,9 @@ class _SignUpPageState extends State<SignUpPage> {
     } catch (e) {
       setState(() {
         _isLoading = false;
+        _clearTextFields(); // Clear fields on failure
       });
       _showErrorDialog('Sign up failed: $e');
-    }
-  }
-
-  Future<void> _signUpWithGoogle() async {
-    setState(() {
-      _isLoading = true;
-    });
-    try {
-      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-
-      if (googleUser == null) {
-        throw Exception('Google sign-in aborted by user');
-      }
-
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
-
-      if (googleAuth.accessToken != null && googleAuth.idToken != null) {
-        final credential = GoogleAuthProvider.credential(
-          accessToken: googleAuth.accessToken,
-          idToken: googleAuth.idToken,
-        );
-
-        final UserCredential userCredential =
-            await _auth.signInWithCredential(credential);
-        final User? user = userCredential.user;
-        if (user != null) {
-          await _checkUserInDatabase(user);
-        }
-      } else {
-        throw Exception('Google authentication failed');
-      }
-    } catch (e) {
-      setState(() {
-        _isLoading = false;
-      });
-      _showErrorDialog('Google sign-up failed: $e');
-    }
-  }
-
-  Future<void> _checkUserInDatabase(User user) async {
-    final DocumentSnapshot userDoc =
-        await _firestore.collection('users').doc(user.uid).get();
-    if (userDoc.exists) {
-      Navigator.pushReplacementNamed(context, '/homepage');
-    } else {
-      await _saveNewUserInDatabase(user);
-      Navigator.pushReplacementNamed(context, '/onboarding');
     }
   }
 
@@ -197,5 +143,11 @@ class _SignUpPageState extends State<SignUpPage> {
         ],
       ),
     );
+  }
+
+  void _clearTextFields() {
+    _nameController.clear(); // Clear the name field
+    _emailController.clear(); // Clear the email field
+    _passwordController.clear(); // Clear the password field
   }
 }

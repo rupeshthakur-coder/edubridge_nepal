@@ -2,9 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/auth/auth_page.dart'; // Ensure these imports are correct
 import 'package:myapp/auth/log_in_page.dart';
-import 'package:myapp/features/navigation_bar/navigation_bar_pages.dart'; // Ensure these imports are correct
-import 'package:myapp/features/onboarding/onboarding_page.dart'; // Ensure these imports are correct
-import 'package:myapp/theme/theme_app.dart'; // Ensure these imports are correct
+import 'package:myapp/features/users/navigation_bar/navigation_bar_pages.dart'; // Ensure these imports are correct
+import 'package:myapp/features/users/onboarding/onboarding_page.dart'; // Ensure these imports are correct
+import 'package:myapp/features/users/settings/profile_page.dart';
+import 'package:myapp/core/theme/theme_app.dart'; // Ensure these imports are correct
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => const SignUpPage(), // Sign Up Page
         '/homepage': (context) =>
             const NavigationBarPages(), // Home Page after login
-        '/onboarding': (context) => const OnboardingScreen(), // Onboarding Page
+        '/onboarding': (context) => const OnboardingScreen(),
+        '/profile': (context) => ProfilePage(),
       },
     );
   }

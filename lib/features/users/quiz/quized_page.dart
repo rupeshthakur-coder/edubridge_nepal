@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/features/quiz/start_quized.dart';
+import 'package:myapp/features/users/quiz/start_quized.dart';
 
 class QuizStartPage<QuizStartPageState> extends StatefulWidget {
   const QuizStartPage({super.key});
