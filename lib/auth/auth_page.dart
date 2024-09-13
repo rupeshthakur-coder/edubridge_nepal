@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class AuthPage extends StatefulWidget {
+class AuthPage<AuthPageState> extends StatefulWidget {
   const AuthPage({super.key});
 
   @override
-  _AuthPageState createState() => _AuthPageState();
+  createState() => _AuthPageState();
 }
 
 class _AuthPageState extends State<AuthPage> {
@@ -15,14 +15,10 @@ class _AuthPageState extends State<AuthPage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   bool _isLoading = false;
-  bool _isPasswordVisible = false; // For toggling password visibility
-
-  // Email and password controllers
+  bool _isPasswordVisible = false;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  final _formKey = GlobalKey<FormState>(); // For form validation
-
+  final _formKey = GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
@@ -54,8 +50,8 @@ class _AuthPageState extends State<AuthPage> {
       } catch (e) {
         setState(() {
           _isLoading = false;
-          _emailController.clear(); // Clear email field
-          _passwordController.clear(); // Clear password field
+          _emailController.clear();
+          _passwordController.clear();
         });
         _showErrorDialog('Sign in failed: $e');
       }
@@ -100,10 +96,15 @@ class _AuthPageState extends State<AuthPage> {
   Future<void> _checkUserInDatabase(User user) async {
     final DocumentSnapshot userDoc =
         await _firestore.collection('users').doc(user.uid).get();
+
+    if (!mounted) return;
+
     if (userDoc.exists) {
       Navigator.pushReplacementNamed(context, '/homepage');
     } else {
       await _saveNewUserInDatabase(user);
+
+      if (!mounted) return;
       Navigator.pushReplacementNamed(context, '/onboarding');
     }
   }

@@ -101,6 +101,7 @@ class _SignUpPageState extends State<SignUpPage> {
     setState(() {
       _isLoading = true;
     });
+
     try {
       final UserCredential userCredential =
           await _auth.createUserWithEmailAndPassword(
@@ -110,14 +111,18 @@ class _SignUpPageState extends State<SignUpPage> {
       final User? user = userCredential.user;
       if (user != null) {
         await _saveNewUserInDatabase(user);
+
+        if (!mounted) return;
         Navigator.pushReplacementNamed(context, '/login');
       }
     } catch (e) {
-      setState(() {
-        _isLoading = false;
-        _clearTextFields(); // Clear fields on failure
-      });
-      _showErrorDialog('Sign up failed: $e');
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+          _clearTextFields();
+        });
+        _showErrorDialog('Sign up failed: $e');
+      }
     }
   }
 

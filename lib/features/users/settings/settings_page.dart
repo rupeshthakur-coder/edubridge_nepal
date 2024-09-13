@@ -38,16 +38,16 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             const SizedBox(height: 20), // Increased spacing
             // Dark Mode Toggle
-            _buildSwitchTile(
-              icon: Icons.dark_mode,
-              title: 'Dark Mode',
-              value: isDarkMode,
-              onChanged: (value) {
-                setState(() {
-                  isDarkMode = value;
-                });
-              },
-            ),
+            // _buildSwitchTile(
+            //   icon: Icons.dark_mode,
+            //   title: 'Dark Mode',
+            //   value: isDarkMode,
+            //   onChanged: (value) {
+            //     setState(() {
+            //       isDarkMode = value;
+            //     });
+            //   },
+            // ),
             const SizedBox(height: 20),
             // Notifications Toggle
             _buildSwitchTile(

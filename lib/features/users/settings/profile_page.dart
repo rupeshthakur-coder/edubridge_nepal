@@ -106,12 +106,27 @@ class ProfilePage extends StatelessWidget {
                 const SizedBox(height: 20.0),
 
                 // Logout Option
+                // _profileOption(context, Icons.logout, 'Log Out', () {
+                //   FirebaseAuth.instance.signOut().then((_) {
+                //     Navigator.of(context).pushAndRemoveUntil(
+
+                //         '/login'); // Replace with actual login route
+                //   }).catchError((error) {
+                //     // Handle any sign-out errors here if needed
+                //     ScaffoldMessenger.of(context).showSnackBar(
+                //       SnackBar(content: Text('Error logging out: $error')),
+                //     );
+                //   });
+                // }),
+
                 _profileOption(context, Icons.logout, 'Log Out', () {
                   FirebaseAuth.instance.signOut().then((_) {
-                    Navigator.of(context).pushReplacementNamed(
-                        '/login'); // Replace with actual login route
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/login', // Replace with your actual login route
+                      (Route<dynamic> route) =>
+                          false, // Clear all previous routes
+                    );
                   }).catchError((error) {
-                    // Handle any sign-out errors here if needed
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Error logging out: $error')),
                     );
