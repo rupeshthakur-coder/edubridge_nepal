@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class AuthPage<AuthPageState> extends StatefulWidget {
-  const AuthPage({super.key});
+class SignInPageTeacher<SignInPageTeacherState> extends StatefulWidget {
+  const SignInPageTeacher({super.key});
 
   @override
-  createState() => _AuthPageState();
+  createState() => _SignInPageTeacherState();
 }
 
-class _AuthPageState extends State<AuthPage> {
+class _SignInPageTeacherState extends State<SignInPageTeacher> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -19,17 +19,15 @@ class _AuthPageState extends State<AuthPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     super.initState();
-    _checkIfUserIsLoggedIn();
-  }
-
-  Future<void> _checkIfUserIsLoggedIn() async {
-    final User? user = _auth.currentUser;
-    if (user != null) {
-      await _checkUserInDatabase(user);
-    }
+    _auth.authStateChanges().listen((User? user) async {
+      if (user != null) {
+        await _checkUserInDatabase(user);
+      }
+    });
   }
 
   Future<void> _signInWithEmailAndPassword() async {
@@ -95,22 +93,18 @@ class _AuthPageState extends State<AuthPage> {
 
   Future<void> _checkUserInDatabase(User user) async {
     final DocumentSnapshot userDoc =
-        await _firestore.collection('users').doc(user.uid).get();
-
-    if (!mounted) return;
+        await _firestore.collection('teachers').doc(user.uid).get();
 
     if (userDoc.exists) {
-      Navigator.pushReplacementNamed(context, '/homepage');
+      Navigator.pushReplacementNamed(context, '/teacher_homepage');
     } else {
-      await _saveNewUserInDatabase(user);
-
-      if (!mounted) return;
-      Navigator.pushReplacementNamed(context, '/onboarding');
+      await _saveNewTeacherInDatabase(user);
+      Navigator.pushReplacementNamed(context, '/teacher_onboarding');
     }
   }
 
-  Future<void> _saveNewUserInDatabase(User user) async {
-    await _firestore.collection('users').doc(user.uid).set({
+  Future<void> _saveNewTeacherInDatabase(User user) async {
+    await _firestore.collection('teachers').doc(user.uid).set({
       'email': user.email,
       'name': user.displayName ?? 'Unknown',
       'createdAt': FieldValue.serverTimestamp(),
@@ -144,7 +138,7 @@ class _AuthPageState extends State<AuthPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Sign In"),
+        title: const Text("Teacher Sign In"),
         backgroundColor: const Color(0xFF1E2742),
       ),
       body: Center(
@@ -159,7 +153,7 @@ class _AuthPageState extends State<AuthPage> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         const Text(
-                          "Welcome Back!",
+                          "Welcome Back, Teacher!",
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
@@ -170,14 +164,11 @@ class _AuthPageState extends State<AuthPage> {
                           controller: _emailController,
                           decoration: const InputDecoration(
                             labelText: 'Email',
-                            border:
-                                OutlineInputBorder(), // Use OutlineInputBorder instead of Underline
+                            border: OutlineInputBorder(),
                             enabledBorder: OutlineInputBorder(
-                              // Optional: Custom border when the field is enabled
                               borderSide: BorderSide(color: Colors.grey),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              // Optional: Custom border when the field is focused
                               borderSide: BorderSide(color: Color(0xFF1E2742)),
                             ),
                             prefixIcon: Icon(Icons.email),
@@ -197,8 +188,7 @@ class _AuthPageState extends State<AuthPage> {
                           controller: _passwordController,
                           decoration: InputDecoration(
                             labelText: 'Password',
-                            border:
-                                const OutlineInputBorder(), // Remove underline
+                            border: const OutlineInputBorder(),
                             enabledBorder: const OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.grey),
                             ),
@@ -249,9 +239,21 @@ class _AuthPageState extends State<AuthPage> {
                           ),
                         ),
                         const SizedBox(height: 12),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(context, '/login');
+                          },
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(double.infinity, 48),
+                            backgroundColor: const Color(0xFF1E2742),
+                          ),
+                          child: const Text("Continue as a Student"),
+                        ),
+                        const SizedBox(height: 12),
                         TextButton(
                           onPressed: () {
-                            Navigator.pushReplacementNamed(context, '/signup');
+                            Navigator.pushReplacementNamed(
+                                context, '/sign_up_as_teacher');
                           },
                           child: const Text("Don't have an account? Sign Up"),
                         ),

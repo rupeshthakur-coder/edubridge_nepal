@@ -2,14 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class SignUpPageStudent extends StatefulWidget {
+  const SignUpPageStudent({super.key});
 
   @override
-  createState() => _SignUpPageState();
+  createState() => _SignUpPageStudentState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignUpPageStudentState extends State<SignUpPageStudent> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   bool _isLoading = false;

@@ -1,46 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/core/color/my_app_color.dart';
 
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
-      primaryColor: const Color(0xFF1E2742),
-      scaffoldBackgroundColor: const Color(0xFFF3F6FD),
-      appBarTheme: const AppBarTheme(
-        color: Color(0xFF1E2742),
+      primaryColor: MyAppColors.primaryColor, // Dark Blue
+      scaffoldBackgroundColor:
+          MyAppColors.backgroundColor, // Light Gray Background
+      appBarTheme: AppBarTheme(
+        color: MyAppColors.appBarBackgroundColor, // Dark Blue
         titleTextStyle: TextStyle(
-          color: Colors.white,
+          color: MyAppColors.textColorLight, // White text
           fontWeight: FontWeight.bold,
           fontSize: 20,
         ),
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(color: MyAppColors.iconPrimary), // White icons
       ),
-      colorScheme: const ColorScheme.light(
-        primary: Color(0xFF1E2742),
-        secondary: Color(0xFF9A2143),
-        onPrimary: Colors.white,
-        onSecondary: Colors.white,
+      colorScheme: ColorScheme.light(
+        primary: MyAppColors.primaryColor, // Dark Blue
+        secondary: MyAppColors.secondaryColor, // Wine Red
+        onPrimary: MyAppColors.textColorLight, // White text on primary
+        onSecondary: MyAppColors.textColorLight, // White text on secondary
       ),
-      textTheme: const TextTheme(
+      textTheme: TextTheme(
         displayLarge: TextStyle(
-            color: Color(0xFF1E2742),
-            fontWeight: FontWeight.bold,
-            fontSize: 24),
-        bodyLarge: TextStyle(color: Colors.grey, fontSize: 16),
-        bodyMedium: TextStyle(color: Colors.black87, fontSize: 14),
-        labelLarge: TextStyle(color: Colors.white, fontSize: 16),
+          color: MyAppColors.textColorPrimary, // Dark Blue
+          fontWeight: FontWeight.bold,
+          fontSize: 24,
+        ),
+        bodyLarge: TextStyle(
+          color: Colors.grey,
+          fontSize: 16,
+        ), // Gray text
+        bodyMedium: TextStyle(
+          color: Colors.black87,
+          fontSize: 14,
+        ), // Dark text
+        labelLarge: TextStyle(
+          color: MyAppColors.textColorLight,
+          fontSize: 16,
+        ), // White text
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          foregroundColor: Colors.white,
-          backgroundColor: const Color(0xFF1E2742),
+          foregroundColor: MyAppColors.buttonTextColor, // White text in buttons
+          backgroundColor: MyAppColors.buttonPrimary, // Dark Blue button
           textStyle: const TextStyle(fontWeight: FontWeight.bold),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
         ),
       ),
-      buttonTheme: const ButtonThemeData(
-        buttonColor: Color(0xFF1E2742),
+      buttonTheme: ButtonThemeData(
+        buttonColor: MyAppColors.buttonPrimary, // Dark Blue button
         textTheme: ButtonTextTheme.primary,
       ),
     );
@@ -48,42 +60,55 @@ class AppTheme {
 
   static ThemeData get darkTheme {
     return ThemeData(
-      primaryColor: const Color(0xFF1E2742),
-      scaffoldBackgroundColor: const Color(0xFF121212),
-      appBarTheme: const AppBarTheme(
-        color: Color(0xFF1E2742),
+      primaryColor: MyAppColors.primaryColor, // Dark Blue
+      scaffoldBackgroundColor:
+          MyAppColors.darkBackgroundColor, // Dark background
+      appBarTheme: AppBarTheme(
+        color: MyAppColors.appBarBackgroundColor, // Dark Blue
         titleTextStyle: TextStyle(
-          color: Colors.white,
+          color: MyAppColors.textColorLight, // White text
           fontWeight: FontWeight.bold,
           fontSize: 20,
         ),
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(color: MyAppColors.iconPrimary), // White icons
       ),
-      colorScheme: const ColorScheme.dark(
-        primary: Color(0xFF1E2742),
-        secondary: Color(0xFF9A2143),
-        onPrimary: Colors.white,
-        onSecondary: Colors.white,
+      colorScheme: ColorScheme.dark(
+        primary: MyAppColors.primaryColor, // Dark Blue
+        secondary: MyAppColors.secondaryColor, // Wine Red
+        onPrimary: MyAppColors.textColorLight, // White text on primary
+        onSecondary: MyAppColors.textColorLight, // White text on secondary
       ),
-      textTheme: const TextTheme(
+      textTheme: TextTheme(
         displayLarge: TextStyle(
-            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),
-        bodyLarge: TextStyle(color: Colors.grey, fontSize: 16),
-        bodyMedium: TextStyle(color: Colors.white70, fontSize: 14),
-        labelLarge: TextStyle(color: Colors.white, fontSize: 16),
+          color: MyAppColors.textColorLight, // White text
+          fontWeight: FontWeight.bold,
+          fontSize: 24,
+        ),
+        bodyLarge: TextStyle(
+          color: Colors.grey,
+          fontSize: 16,
+        ), // Gray text
+        bodyMedium: TextStyle(
+          color: Colors.white70,
+          fontSize: 14,
+        ), // White70 text
+        labelLarge: TextStyle(
+          color: MyAppColors.textColorLight,
+          fontSize: 16,
+        ), // White text
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          foregroundColor: Colors.white,
-          backgroundColor: const Color(0xFF1E2742),
+          foregroundColor: MyAppColors.buttonTextColor, // White text in buttons
+          backgroundColor: MyAppColors.buttonPrimary, // Dark Blue button
           textStyle: const TextStyle(fontWeight: FontWeight.bold),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
         ),
       ),
-      buttonTheme: const ButtonThemeData(
-        buttonColor: Color(0xFF1E2742),
+      buttonTheme: ButtonThemeData(
+        buttonColor: MyAppColors.buttonPrimary, // Dark Blue button
         textTheme: ButtonTextTheme.primary,
       ),
     );
